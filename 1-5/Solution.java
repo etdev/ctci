@@ -29,6 +29,29 @@ public class Solution {
     System.out.println("\nduration: " + duration/1000000000.0 + "s");
   }
 
+  public static String compressString(String str) {
+    if(str==null) { return null; }
+    if(str.length() < 3) { return str; }
+    int sameCount = 0;
+    String newStr = "";
+    char currentChar = '\0';
+
+    for(int i=0; i<str.length(); i++) {
+      if (str.charAt(i) == currentChar) {
+        sameCount++;
+      }
+      else {
+        newStr += (currentChar + "" + sameCount);
+        currentChar = str.charAt(i);
+        sameCount = 1;
+      }
+      if (newStr.length() >= str.length()) {
+        return str;
+      }
+    }
+    return newStr;
+  }
+
   public static void printCharArray(char[] arr) {
     System.out.print("[");
     for(char c : arr) {
