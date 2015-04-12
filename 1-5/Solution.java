@@ -4,8 +4,12 @@ public class Solution {
   public static void main(String args[]) {
     final long startTime = System.nanoTime();
 
+    String testString1 = "aabcccccaaa";
+
+    System.out.println("For \"" + testString1 + "\": ");
+    System.out.println(compressString(testString1));
+
     /*
-    String testString1 = "apples   ";
     String testString2 = "   apples      ";
     String testString3 = "ba na na s         ";
     String testString4 = "   ";
@@ -30,25 +34,28 @@ public class Solution {
   }
 
   public static String compressString(String str) {
-    if(str==null) { return null; }
-    if(str.length() < 3) { return str; }
-    int sameCount = 0;
-    String newStr = "";
-    char currentChar = '\0';
+    if (str == null) { return null; }
+    if (str.length() < 3) { return str; }
 
-    for(int i=0; i<str.length(); i++) {
+    char currentChar = str.charAt(0);
+    int sameCount = 1;
+    String newStr = "";
+    for (int i=1; i<str.length(); i++) {
       if (str.charAt(i) == currentChar) {
         sameCount++;
       }
       else {
-        newStr += (currentChar + "" + sameCount);
+        newStr += currentChar + "" + sameCount;
         currentChar = str.charAt(i);
         sameCount = 1;
       }
-      if (newStr.length() >= str.length()) {
+      if (newStr.length() >= str.length()) { 
+        System.out.println("final: " + newStr + " (str)");
         return str;
       }
     }
+    newStr += currentChar + "" + sameCount;
+    System.out.println("final: " + newStr + " (newStr)");
     return newStr;
   }
 
