@@ -54,8 +54,8 @@ public class Solution {
         System.out.println("temp: " + temp);
         offY = Math.abs(matrix.length-j);
         System.out.println("offY: " + offY);
-        offY = Math.abs(matrix.length-j);
-        offX = Math.abs(matrix.length-i);
+        offY = Math.abs(matrix.length-1-j);
+        offX = Math.abs(matrix.length-1-i);
         matrix[i][j] = matrix[offY][i];
         matrix[j][offX] = temp;
       }
